@@ -29,12 +29,12 @@
         <div class="flex items-center">
           <img src="./assets/Group.png" class="h-[50px]" alt="" />
           <div class="ml-3">
-            <p class="font-bold">$<span id="availabe-balance">45000</span></p>
+            <p class="font-bold">$<span id="available-balance">45000</span></p>
             <p class="text-[#08080880]">Availabe Balance</p>
           </div>
         </div>
         <div>
-          <button class="btn text-[#08080880]">
+          <button id="logout-button"  class="btn text-[#08080880]">
             <i
               class="fa-solid fa-arrow-right-from-bracket rotate-180 text-gray-700"
             ></i>
@@ -62,11 +62,11 @@
           <img src="./assets/wallet1.png" class="m-auto" alt="" />
           <h2>Cashout</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="transfer-button" class="border-2 border-gray-300 text-center p-3 rounded-xl">
           <img src="./assets/wallet1.png" class="m-auto" alt="" />
           <h2>Transfer Money</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="bonus-button" class="border-2 border-gray-300 text-center p-3 rounded-xl">
           <img src="./assets/wallet1.png" class="m-auto" alt="" />
           <h2>Get Bonus</h2>
         </div>
@@ -85,7 +85,7 @@
 
     <div class="all-form-section max-w-lg mx-auto">
       <!-- add money -->
-      <div id="add-money-parent"  >
+      <div class="form" id="add-money-parent"  >
         <h1  class="my-5 font-bold">Add Money</h1>
         <form action="" class="bg-white rounded-2xl p-8">
           <div class="mb-3">
@@ -129,7 +129,7 @@
 
       <!-- For cash out section -->
 
-      <div id="cash-out-parent" style="display:none;">
+      <div class="form" id="cash-out-parent" style="display:none;">
         <h1 class="my-5 font-bold">Cash Out</h1>
         <form action="" class="bg-white rounded-2xl p-8">
 
@@ -163,8 +163,20 @@
         </form>
       </div>
 
+      <!-- Transfer Money -->
+       <div class="form" id="transfer-money-parent" style="display: none;">
+          <h1 class="my-5 font-bold">Transfer Money</h1>
+       </div>
+      <!-- Get Bonus -->
+       <div class="form" id="get-bonus-parent" style="display: none;">
+          <h1 class="my-5 font-bold">Get Bonus</h1>
+       </div>
+
 
     </div>
+
+
+
     <script src="./home.js"></script>
   </body>
 </html>

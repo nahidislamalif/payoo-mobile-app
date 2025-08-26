@@ -1,60 +1,102 @@
 const validPin = 1234
 
-document.getElementById("add-money-btn").addEventListener('click', function(e){
-    e.preventDefault()
-    // console.log("Add money")
+// function to get the input values
+function getInputValueNumber(id) {
+    const inputField = document.getElementById(id)
+    const inputFieldValue = inputField.value
+    const inputFieldValueNumber = Number(inputFieldValue)
+    return inputFieldValueNumber
+}
 
+function getInputvalue(id) {
+    const inputField = document.getElementById(id)
+    const inputFieldValue = inputField.value
+    return inputFieldValue
+}
+
+// FUNCTION TO GET INNERTEXT
+
+function getInnerText(id) {
+    const element = document.getElementById(id)
+    const elementValue = element.innerText
+    const elementValueNumber = Number(elementValue)
+    return elementValueNumber
+}
+
+// function to set inner text
+
+function setInnerText(id, value) {
+    const element = document.getElementById(id)
+    element.innerText = value
+}
+
+// Function to toggle
+function handleToggle(id){
+    const forms =  document.getElementsByClassName("form")
+    console.log(forms)
+    for (const form of forms ){
+        form.style.display = "none"
+        document.getElementById(id).style.display = "block"
+    }
+}
+
+// Add Money
+document.getElementById("add-money-btn").addEventListener('click', function (e) {
+    e.preventDefault()
     const bank = document.getElementById("bank").value
-
     const accountNumber = document.getElementById("account-number").value
-    const amount = parseInt(document.getElementById("add-amount").value)
+    const amount = getInputValueNumber("add-amount")
+    const pin = getInputValueNumber("add-pin")
+    const availableBalance = getInnerText('available-balance')
 
-    const pin = parseInt(document.getElementById("add-pin").value)
-
-    const availableBalance = parseInt(document.getElementById("availabe-balance").innerText)
-
-    if(accountNumber.length < 10 ){
+    if (accountNumber.length < 10) {
         alert("Enter a valid Account Number")
-        return ;
+        return
     }
-    if (pin !== validPin){
+    if (pin !== validPin) {
         alert("Please provide a valid pin")
-        return ;
+        return
     }
 
-    const totalNewbalance = amount + availableBalance
-    document.getElementById("availabe-balance").innerText = totalNewbalance
-
-    // console.log(bank,accountNumber,amount,pin)
+    const totalNewBalance = amount + availableBalance
+    setInnerText("available-balance", totalNewBalance)
 })
-// Cash out withdraw
 
-document.getElementById("withdraw-btn").addEventListener('click',function(e){
+// Withdraw Money
+document.getElementById("withdraw-btn").addEventListener('click', function (e) {
     e.preventDefault()
-    const amount =  parseInt(document.getElementById("withdraw-amount").value)
-    const availableBalance = parseInt(document.getElementById('availabe-balance').innerText)
+    const amount = getInputValueNumber('withdraw-amount')
+    const availableBalance = getInnerText('available-balance')
 
-    console.log(amount,availableBalance)
+    if (amount > availableBalance) {
+        alert("Not enough balance")
+        return
+    }
 
-    const withdrawBalance = availableBalance - amount
-    console.log(withdrawBalance)
-    document.getElementById('availabe-balance').innerText  = withdrawBalance
+    const totalNewAvailableBalance = availableBalance - amount
+    setInnerText("available-balance", totalNewAvailableBalance)
+})
+
+// Tab switch
+document.getElementById("add-money-button").addEventListener('click', function (e) {
+  
+        handleToggle("add-money-parent")
+    })
+
+document.getElementById("cash-out-button").addEventListener('click', function () {
     
+        handleToggle("cash-out-parent")
 })
 
-
-
-
-//toggleing feature
-
-// for add money
-document.getElementById("add-money-button").addEventListener('click', function(){
-    document.getElementById('cash-out-parent').style.display = "none"
-    document.getElementById('add-money-parent').style.display = "block"
+document.getElementById("transfer-button").addEventListener('click',function(){
+    
+    handleToggle("transfer-money-parent")
+})
+document.getElementById("bonus-button").addEventListener('click',function(){  
+    handleToggle("get-bonus-parent")
 })
 
-// for cash out
-document.getElementById("cash-out-button").addEventListener('click', function(){
-    document.getElementById('add-money-parent').style.display = "none"
-    document.getElementById('cash-out-parent').style.display = "block"
+// logout Button
+document.getElementById('logout-button').addEventListener('click',function(){
+     window.location.href="./index.html"
 })
