@@ -40,6 +40,20 @@ function handleToggle(id){
     }
 }
 
+// function to toggle button
+
+function handleToggleButton (id){
+    const formBtns = document.getElementsByClassName("form-btn")
+
+        for (const btn of formBtns){
+            btn.classList.remove("border-[#0874F2]","bg-[#0874f20d]")
+            btn.classList.add("border-gray-300")
+        }
+
+        document.getElementById(id).classList.remove("border-gray-300")
+        document.getElementById(id).classList.add("border-[#0874F2]","bg-[#0874f20d]")
+}
+
 // Add Money
 document.getElementById("add-money-btn").addEventListener('click', function (e) {
     e.preventDefault()
@@ -77,61 +91,45 @@ document.getElementById("withdraw-btn").addEventListener('click', function (e) {
     setInnerText("available-balance", totalNewAvailableBalance)
 })
 
+// Transfer Money
+document.getElementById("transfer-btn").addEventListener('click', function (e) {
+    e.preventDefault()
+    const amount = getInputValueNumber('transfer-amount')
+    const availableBalance = getInnerText('available-balance')
+
+    if (amount > availableBalance) {
+        alert("Not enough balance")
+        return
+    }
+
+    const totalNewAvailableBalance = availableBalance - amount
+    setInnerText("available-balance", totalNewAvailableBalance)
+})
+
+
 // Tab switch
 document.getElementById("add-money-button").addEventListener('click', function (e) {
   
         handleToggle("add-money-parent")
 
-        const formBtns = document.getElementsByClassName("form-btn")
-
-        for (const btn of formBtns){
-            btn.classList.remove("border-[#0874F2]","bg-[#0874f20d]")
-            btn.classList.add("border-gray-300")
-        }
-
-        document.getElementById("add-money-button").classList.remove("border-gray-300")
-        document.getElementById("add-money-button").classList.add("border-[#0874F2]","bg-[#0874f20d]")
+        handleToggleButton("add-money-button")
 
     })
 
 document.getElementById("cash-out-button").addEventListener('click', function () {
     
         handleToggle("cash-out-parent")
-        const formBtns = document.getElementsByClassName("form-btn")
-
-        for (const btn of formBtns){
-            btn.classList.remove("border-[#0874F2]","bg-[#0874f20d]")
-            btn.classList.add("border-gray-300")
-        }
-
-        document.getElementById("cash-out-button").classList.remove("border-gray-300")
-        document.getElementById("cash-out-button").classList.add("border-[#0874F2]","bg-[#0874f20d]")
+        handleToggleButton("cash-out-button")
 })
 
 document.getElementById("transfer-button").addEventListener('click',function(){
     
     handleToggle("transfer-money-parent")
-    const formBtns = document.getElementsByClassName("form-btn")
-
-        for (const btn of formBtns){
-            btn.classList.remove("border-[#0874F2]","bg-[#0874f20d]")
-            btn.classList.add("border-gray-300")
-        }
-
-        document.getElementById("transfer-button").classList.remove("border-gray-300")
-        document.getElementById("transfer-button").classList.add("border-[#0874F2]","bg-[#0874f20d]")
+    handleToggleButton("transfer-button")
 })
 document.getElementById("bonus-button").addEventListener('click',function(){  
     handleToggle("get-bonus-parent")
-    const formBtns = document.getElementsByClassName("form-btn")
-
-        for (const btn of formBtns){
-            btn.classList.remove("border-[#0874F2]","bg-[#0874f20d]")
-            btn.classList.add("border-gray-300")
-        }
-
-        document.getElementById("bonus-button").classList.remove("border-gray-300")
-        document.getElementById("bonus-button").classList.add("border-[#0874F2]","bg-[#0874f20d]")
+    handleToggleButton("bonus-button")
 })
 
 // logout Button
