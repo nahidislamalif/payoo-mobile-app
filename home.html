@@ -70,11 +70,11 @@
           <img src="./assets/wallet1.png" class="m-auto" alt="" />
           <h2>Get Bonus</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="bill-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img src="./assets/wallet1.png" class="m-auto" alt="" />
           <h2>Pay Bill</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="transactions-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img src="./assets/wallet1.png" class="m-auto" alt="" />
           <h2>Transaction</h2>
         </div>
@@ -201,6 +201,23 @@
        <div class="form" id="get-bonus-parent" style="display: none;">
           <h1 class="my-5 font-bold">Get Bonus</h1>
        </div>
+      <!-- Pay Bills -->
+       <div class="form" id="pay-bill-parent" style="display: none;">
+          <h1 class="my-5 font-bold">Pay Bill</h1>
+       </div>
+      <!-- Transaction -->
+       <div class="form" id="transactions-parent" style="display: none;">
+          <div class="flex justify-between items-center">
+            <h1 class="my-5 font-bold">Transaction</h1>
+            <p class="text-[#08080880]">View All</p>
+          </div>
+
+          <div id="transaction-container">
+            
+          </div>
+       </div>
+
+
 
 
     </div>
